@@ -1,0 +1,19 @@
+[Unit]
+Description=SRGH IT Vendor Contacts (Spring Boot)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=sarangit
+Group=sarangit
+WorkingDirectory=/opt/SRGH_IT/vendor
+Environment=PORT=3017
+EnvironmentFile=/etc/SRGH_IT/vendor.env
+ExecStart=/usr/bin/java -Xms128m -Xmx384m -jar /opt/SRGH_IT/vendor/vendor.jar
+Restart=always
+RestartSec=5
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target
